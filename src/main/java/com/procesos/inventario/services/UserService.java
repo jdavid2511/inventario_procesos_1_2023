@@ -1,22 +1,19 @@
 package com.procesos.inventario.services;
 import com.procesos.inventario.models.User;
+import com.procesos.inventario.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class UserService {
-    public User getUser(Long id){
-        User usuario = new User();
-        usuario.setId(1L);
-        usuario.setFirstName("David");
-        usuario.setLastName("Garcia");
-        usuario.setAddress("carrera 11 #5-44");
-        usuario.setEmail("david@gmail.com");
-        usuario.setPassword("1234");
-        usuario.setBirthday(new Date(100,9,02));
+    @Autowired
+    private UserRepository userRepository;
 
+    public Optional getUser(Long id){
 
-        return usuario;
+        return userRepository.findById(id);
     }
 }
