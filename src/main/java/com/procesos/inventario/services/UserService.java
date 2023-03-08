@@ -14,7 +14,7 @@ public class UserService {
         usuario.setAddress("carrera 11 #5-44");
         usuario.setEmail("david@gmail.com");
         usuario.setPassword("1234");
-        usuario.setBirthday(new Date(2002/11/25));
+        usuario.setBirthday(new Date(100,9,02));
 
 
         return usuario;
