@@ -1,22 +1,14 @@
 package com.procesos.inventario.services;
+
 import com.procesos.inventario.models.User;
-import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
-@Service
-public class UserService {
-    public User getUser(Long id){
-        User usuario = new User();
-        usuario.setId(1L);
-        usuario.setFirstName("David");
-        usuario.setLastName("Garcia");
-        usuario.setAddress("carrera 11 #5-44");
-        usuario.setEmail("david@gmail.com");
-        usuario.setPassword("1234");
-        usuario.setBirthday(new Date(100,9,02));
+public interface UserService {
+    User getUser(Long id);
+    Boolean createUser(User user);
+    List<User> allUsers();
+    Boolean updateUser(Long id, User user);
 
-
-        return usuario;
-    }
 }
