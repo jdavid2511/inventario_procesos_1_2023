@@ -63,14 +63,27 @@ public class UserController {
         try {
             if (userDB == null) {
                 response.put("status", "201");
-                response.put("massage", "se creo encontro usuario");
+                response.put("massage", "No encontro usuario");
                 return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
             }
+            response.put("status", "201");
+            response.put("massage", "se actualizo el usuario");
             return new ResponseEntity(userServiceImp.getUser(id), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             response.put("status", "201");
-            response.put("massage", "se creo encontro usuario");
+            response.put("massage", "No se actualizo el usuario");
             return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
+        }
+    }
+    @PostMapping(value = "auth/login")
+    public ResponseEntity login (@RequestBody User user){
+        Map response = new HashMap();
+        try {
+            return new ResponseEntity(userServiceImp.login(user), HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            response.put("status","404");
+            response.put("massage",e.getMessage());
+            return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
         }
     }
 }
